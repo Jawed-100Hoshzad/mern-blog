@@ -1,5 +1,5 @@
 export default function SignIn(){
     return (
-        <div>SignIn</div>
+        <div className="min-h-screen mt-20">SignIn</div>
     )
 } 
