@@ -1,7 +1,33 @@
 import { Link } from "react-router-dom";
 import { Button, Label, TextInput } from "flowbite-react";
+import {useState} from "react";
 
 export default function SignUp(){
+   const [formData, setFormData] = useState({});
+   
+
+   const handleChange = (e) => {
+    setFormData({...formData, [e.target.id]:e.target.value});
+   }
+   
+//    const handleSubmit = async (e)=> {
+//     e.preventDefault();
+//     try{
+//      const res = await fetch('/api/auth/signup', {
+//         method:'POST',
+//         headers: {'Content-Type':'application/json'},
+//         body:JSON.strigify(formData),
+//      });
+//      const data = await res.json();
+//     }catch(error) {
+
+//     }
+
+    
+//   }
+    
+
+
     return (
         <div className="min-h-screen mt-20">
             <div className="flex flex-col p-5 max-w-3xl mx-auto gap-4 md:flex-row md:items-center">
@@ -17,28 +43,28 @@ export default function SignUp(){
 
                 {/* right side div */}
                 <div className="flex-1">
-                  <form className="flex flex-col gap-3" >
+                  <form className="flex flex-col gap-3" onSubmit={handleSubmit} >
                     <div>
                         <Label value="Your username" className="" />
                         <TextInput 
                          type="text"
                          placeholder="username"
-                         id="username"
-                        />
+                         id="username" onChange={handleChange} />
                     </div>
 
                     <div className="">
                         <Label value="Your email" />
                         <TextInput 
-                         type="text"
+                         type="email"
                          placeholder="jdhoshzad100@gmail.com"
-                         id="email"
-                        />
+                         id="email"  onChange={handleChange}/>
                     </div>
 
                     <div>
                         <Label value="password"/>
-                        <TextInput type="text" placeholder="password" id="password" />
+                        <TextInput type="password" placeholder="password" id="password" 
+                          onChange={handleChange}
+                        />
                     </div>
 
                     <Button gradientDuoTone="purpleToPink" type="submit">
@@ -52,7 +78,7 @@ export default function SignUp(){
                     </Link>
                   </div>
                 </div>
-
+                
             </div>
         </div>
     )
